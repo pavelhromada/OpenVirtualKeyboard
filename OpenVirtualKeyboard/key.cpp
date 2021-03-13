@@ -82,8 +82,7 @@ void Key::setText(const QString &text)
     _text = text;
     emit textChanged();
 }
-#include <QDebug>
-#include <QQmlEngine>
+
 void Key::setDelegate( QQuickItem* delegate )
 {
     if (_delegate == delegate)
@@ -93,9 +92,5 @@ void Key::setDelegate( QQuickItem* delegate )
     if (_delegate)
         _delegate->setParentItem( this );
 
-//    qDebug() << "parent context" << QQmlEngine::contextForObject(this);
-//    qDebug() << "delegate context" << QQmlEngine::contextForObject(_delegate);
-//    connect(this, &QObject::destroyed, this, [](QObject* o){qDebug() << "parent destroyed" << o;});
-//    connect(_delegate, &QObject::destroyed, this, [](QObject* o){qDebug() << "delegate destroyed" << o;});
     emit delegateChanged();
 }

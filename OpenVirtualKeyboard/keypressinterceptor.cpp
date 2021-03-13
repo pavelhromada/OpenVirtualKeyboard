@@ -8,7 +8,7 @@ KeyPressInterceptor::KeyPressInterceptor()
 {
     setAcceptedMouseButtons( Qt::LeftButton );
     setAcceptTouchEvents( true );
-    setCursor( Qt::ArrowCursor ); // to avoid Beam cursor, when e.g. InputBox is under keyboard
+    setCursor( Qt::ArrowCursor ); // to prevent Beam cursor, when e.g. InputBox is under keyboard
 }
 
 QQuickItem* KeyPressInterceptor::forwardTo() const

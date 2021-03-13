@@ -8,11 +8,11 @@
 #include "loggingcategory.h"
 #include "utils.h"
 
-const QString ALPHABET_FILENAME = QStringLiteral("alphabet.json");
-const QString SYMBOLS_FILENAME = QStringLiteral("symbols.json");
-const QString DIGITS_FILENAME = QStringLiteral("digits.json");
-const QString NUMBERS_FILENAME = QStringLiteral("numbers.json");
-const QString DIAL_FILENAME = QStringLiteral("dial.json");
+const QString ALPHABET_FILENAME = QStringLiteral( "alphabet.json" );
+const QString SYMBOLS_FILENAME  = QStringLiteral( "symbols.json" );
+const QString DIGITS_FILENAME   = QStringLiteral( "digits.json" );
+const QString NUMBERS_FILENAME  = QStringLiteral( "numbers.json" );
+const QString DIAL_FILENAME     = QStringLiteral( "dial.json" );
 
 KeyboardLayoutsProvider::KeyboardLayoutsProvider()
 {

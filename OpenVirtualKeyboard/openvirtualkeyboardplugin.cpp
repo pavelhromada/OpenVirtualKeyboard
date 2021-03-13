@@ -2,7 +2,6 @@
 #include <QQmlEngine>
 #include "openvirtualkeyboardinputcontext.h"
 #include "openvirtualkeyboardplugin.h"
-//#include "keyboardlayoutloader.h"
 #include "keyboardstyle.h"
 #include "keyalternativespreview.h"
 #include "keypreview.h"

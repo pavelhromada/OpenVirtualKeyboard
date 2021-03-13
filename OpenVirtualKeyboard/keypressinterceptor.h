@@ -55,18 +55,18 @@ private:
     void stopTimers();
     void stopTimer( int& timerId );
 
-    QPointer<Key>     _lastActive;
-    qreal             _lastX              = 0;
-    QQuickItem*       _forwardTo          = nullptr;
-    int               _touchPointId       = -1;
-    int               _actionDelay        = 300;
-    int               _repeatInterval     = 50;
-    int               _delayTimer         = 0;
-    int               _repeatTimer        = 0;
-    int               _alternativesTimer  = 0;
-    bool              _alternativesOn     = false;
-    int               _pressAndHoldTimer  = 0;
-    bool              _ignoreShiftRelease = false;
+    QPointer<Key> _lastActive;
+    qreal         _lastX              = 0;
+    QQuickItem*   _forwardTo          = nullptr;
+    int           _touchPointId       = -1;
+    int           _actionDelay        = 300;
+    int           _repeatInterval     = 50;
+    int           _delayTimer         = 0;
+    int           _repeatTimer        = 0;
+    int           _alternativesTimer  = 0;
+    bool          _alternativesOn     = false;
+    int           _pressAndHoldTimer  = 0;
+    bool          _ignoreShiftRelease = false;
 };
 
 #endif // KEYPRESSINTERCEPTOR_H

@@ -1,0 +1,62 @@
+# Webkit style is loosely based on the Qt style
+BasedOnStyle: WebKit
+Standard: Cpp11
+
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+#AlignOperands: true
+AllowShortFunctionsOnASingleLine: None
+# since clang-format 10 values changed from true/false to enumerated values (anyway default is good for us)
+#AllowShortIfStatementsOnASingleLine: false
+# this is probably since clang-format 10
+#AllowShortLambdasOnASingleLine: Empty
+AlignTrailingComments: true
+AlwaysBreakTemplateDeclarations: true
+
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+    AfterClass: true
+    AfterControlStatement: false
+    AfterEnum: true
+    AfterFunction: true
+    AfterNamespace: true
+    AfterObjCDeclaration: false
+    AfterStruct: true
+    AfterUnion: true
+    BeforeCatch: false
+    BeforeElse: false
+    IndentBraces: false
+    SplitEmptyFunction: false
+    SplitEmptyRecord: true
+# We want to break before the operators, but not before a '='
+BreakBeforeBinaryOperators: NonAssignment
+# Braces are usually attached, but not after functions or classes declaration
+BreakBeforeBraces: Custom
+BreakConstructorInitializers: BeforeComma
+
+ColumnLimit: 100
+# Disable reflow of qdoc comments: indentation rules are different.
+# Translation comments are also excluded
+CommentPragmas: "^!|^:"
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+Cpp11BracedListStyle: false
+
+FixNamespaceComments: true
+ForEachMacros: [ foreach, Q_FOREACH, BOOST_FOREACH, forever, Q_FOREVER, QBENCHMARK, QBENCHMARK_ONCE ]
+
+IndentCaseLabels: true
+IndentWidth: 4
+
+NamespaceIndentation: None
+
+# We want a space between the type and the star for pointer types
+PointerAlignment: Left
+
+SortIncludes: false
+SpaceInEmptyParentheses: false
+SpacesInParentheses: true
+
+UseTab: Never

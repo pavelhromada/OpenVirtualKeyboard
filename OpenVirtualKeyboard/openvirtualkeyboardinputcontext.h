@@ -55,9 +55,7 @@ signals:
     void layoutTypeChanged();
     void enterKeyActionEnabledChanged();
     void enterKeyActionChanged();
-//    void pageChangeRequested();
-
-    void layoutProviderChanged(KeyboardLayoutsProvider* layoutProvider);
+    void layoutProviderChanged();
 
 public slots:
     void setShiftOn( bool shiftOn );
