@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/ovk">
+        <file>qml/Keyboard.qml</file>
+        <file>qml/KeyboardLayout.qml</file>
+        <file>qml/KeyboardRow.qml</file>
+        <file>qml/style/DefaultBackground.qml</file>
+        <file>qml/style/DefaultBackspaceKeyDelegate.qml</file>
+        <file>qml/style/DefaultEnterKeyDelegate.qml</file>
+        <file>qml/style/DefaultHideKeyDelegate.qml</file>
+        <file>qml/style/DefaultKeyDelegate.qml</file>
+        <file>qml/style/DefaultLanguageKeyDelegate.qml</file>
+        <file>qml/style/DefaultNextPageKeyDelegate.qml</file>
+        <file>qml/style/DefaultShiftKeyDelegate.qml</file>
+        <file>qml/style/DefaultSpaceKeyDelegate.qml</file>
+        <file>qml/style/DefaultSpecialKeyDelegate.qml</file>
+        <file>qml/style/DefaultSymbolKeyDelegate.qml</file>
+        <file>qml/style/fontello.ttf</file>
+        <file>qml/style/Icon.qml</file>
+        <file>qml/style/icon-names.js</file>
+        <file>qml/layouts/alphabet.json</file>
+        <file>qml/layouts/dial.json</file>
+        <file>qml/layouts/digits.json</file>
+        <file>qml/layouts/numbers.json</file>
+        <file>qml/layouts/symbols.json</file>
+        <file>qml/style/StyleComponents.qml</file>
+        <file>qml/style/DefaultKeyPreviewDelegate.qml</file>
+        <file>qml/style/DefaultKeyAlternativesPreviewDelegate.qml</file>
+        <file>qml/KeyboardWindow.qml</file>
+        <file>qml/style/DefaultLanguageMenu.qml</file>
+    </qresource>
+</RCC>

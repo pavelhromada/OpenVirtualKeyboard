@@ -1,0 +1,51 @@
+[
+    [
+        [
+            { "type": "key", "text": "q", "alternatives": "A" },
+            { "type": "key", "text": "w", "alternatives": "W" },
+            { "type": "key", "text": "e", "alternatives": "E" },
+            { "type": "key", "text": "r", "alternatives": "R" },
+            { "type": "key", "text": "t", "alternatives": "T" },
+            { "type": "key", "text": "y", "alternatives": "Y" },
+            { "type": "key", "text": "u", "alternatives": "U" },
+            { "type": "key", "text": "i", "alternatives": "I" },
+            { "type": "key", "text": "o", "alternatives": "O" },
+            { "type": "key", "text": "p", "alternatives": "P" },
+            { "type": "backspace" }
+        ],
+        [
+            { "type": "filler", "stretch": 0.32 },
+            { "type": "key", "text": "a", "alternatives": "a" },
+            { "type": "key", "text": "s", "alternatives": "s" },
+            { "type": "key", "text": "d", "alternatives": "E" },
+            { "type": "key", "text": "f", "alternatives": "R" },
+            { "type": "key", "text": "g", "alternatives": "T" },
+            { "type": "key", "text": "h", "alternatives": "Y" },
+            { "type": "key", "text": "j", "alternatives": "U" },
+            { "type": "key", "text": "k", "alternatives": "I" },
+            { "type": "key", "text": "l", "alternatives": "O" },
+            { "type": "enter", "stretch": 1.8 }
+        ],
+        [
+            { "type": "shift", "stretch": 1.15 },
+            { "type": "key", "text": "z", "alternatives": "A" },
+            { "type": "key", "text": "x", "alternatives": "W" },
+            { "type": "key", "text": "c", "alternatives": "E" },
+            { "type": "key", "text": "v", "alternatives": "R" },
+            { "type": "key", "text": "b", "alternatives": "T" },
+            { "type": "key", "text": "n", "alternatives": "Y" },
+            { "type": "key", "text": "m", "alternatives": "U" },
+            { "type": "key", "text": ",", "alternatives": "I" },
+            { "type": "key", "text": ".", "alternatives": "O" },
+            { "type": "shift", "stretch": 1.3 }
+        ],
+        [
+            { "type": "symbol", "text": "&123" },
+            { "type": "language" },
+            { "type": "space", "stretch": 4 },
+            { "type": "key", "text": "'" },
+            { "type": "key", "text": ":-)", "alternatives": [ ";-)", ":-)", ":-D", ":-(", "<3" ] },
+            { "type": "hide" }
+        ]
+    ]
+]

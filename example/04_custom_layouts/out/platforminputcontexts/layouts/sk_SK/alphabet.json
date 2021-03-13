@@ -1,0 +1,51 @@
+[
+    [
+        [
+            { "type": "key", "text": "q", "shiftText": "Q", "alternatives": "A" },
+            { "type": "key", "text": "w", "shiftText": "W" },
+            { "type": "key", "text": "e", "shiftText": "E", "alternatives": "é" },
+            { "type": "key", "text": "r", "shiftText": "R" },
+            { "type": "key", "text": "t", "shiftText": "T", "alternatives": "ť" },
+            { "type": "key", "text": "y", "shiftText": "Y", "alternatives": "ý" },
+            { "type": "key", "text": "u", "shiftText": "U", "alternatives": "ú" },
+            { "type": "key", "text": "i", "shiftText": "I", "alternatives": "í" },
+            { "type": "key", "text": "o", "shiftText": "O", "alternatives": "óô" },
+            { "type": "key", "text": "p", "shiftText": "P" },
+            { "type": "backspace" }
+        ],
+        [
+            { "type": "filler", "stretch": 0.32 },
+            { "type": "key", "text": "a", "shiftText": "A", "alternatives": "áä" },
+            { "type": "key", "text": "s", "shiftText": "S", "alternatives": "š" },
+            { "type": "key", "text": "d", "shiftText": "D", "alternatives": "ď" },
+            { "type": "key", "text": "f", "shiftText": "F" },
+            { "type": "key", "text": "g", "shiftText": "G" },
+            { "type": "key", "text": "h", "shiftText": "H" },
+            { "type": "key", "text": "j", "shiftText": "J" },
+            { "type": "key", "text": "k", "shiftText": "K" },
+            { "type": "key", "text": "l", "shiftText": "L", "alternatives": "ĺľ" },
+            { "type": "enter", "stretch": 1.8 }
+        ],
+        [
+            { "type": "shift", "stretch": 1.15 },
+            { "type": "key", "text": "z", "shiftText": "Z", "alternatives": "ž" },
+            { "type": "key", "text": "x", "shiftText": "X" },
+            { "type": "key", "text": "c", "shiftText": "C", "alternatives": "č" },
+            { "type": "key", "text": "v", "shiftText": "V" },
+            { "type": "key", "text": "b", "shiftText": "B" },
+            { "type": "key", "text": "n", "shiftText": "N", "alternatives": "ň" },
+            { "type": "key", "text": "m", "shiftText": "M" },
+            { "type": "key", "text": "," },
+            { "type": "key", "text": "." },
+            { "type": "shift", "stretch": 1.3 }
+        ],
+        [
+            { "type": "symbol", "text": "&123" },
+            { "type": "language" },
+            { "type": "space", "stretch": 4 },
+            { "type": "key", "text": "'" },
+            { "type": "key", "text": ":-)", "alternatives": [ ";-)", ":-)", ":-D", ":-(", "<3" ] },
+            { "type": "hide" }
+        ]
+    ]
+]

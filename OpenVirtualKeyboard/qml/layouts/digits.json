@@ -1,0 +1,36 @@
+[
+    [
+        [
+            { "type": "filler", "stretch": 3.8 },
+            { "type": "key", "text": "7" },
+            { "type": "key", "text": "8" },
+            { "type": "key", "text": "9" },
+            { "type": "backspace" },
+            { "type": "filler", "stretch": 3.8 }
+        ],
+        [
+            { "type": "filler", "stretch": 3.8 },
+            { "type": "key", "text": "4" },
+            { "type": "key", "text": "5" },
+            { "type": "key", "text": "6" },
+            { "type": "space" },
+            { "type": "filler", "stretch": 3.8 }
+        ],
+        [
+            { "type": "filler", "stretch": 3.8 },
+            { "type": "key", "text": "1" },
+            { "type": "key", "text": "2" },
+            { "type": "key", "text": "3" },
+            { "type": "hide" },
+            { "type": "filler", "stretch": 3.8 }
+        ],
+        [
+            { "type": "filler", "stretch": 3.8 },
+            { "type": "key", "text": "0", "stretch": 2.0 },
+            { "type": "key", "text": ",", "alternatives": "." },
+            { "type": "enter" },
+            { "type": "filler", "stretch": 3.8 }
+        ]
+    ]
+]
+

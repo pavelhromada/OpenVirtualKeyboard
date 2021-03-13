@@ -1,0 +1,100 @@
+[
+    [
+        [
+            { "type": "key", "text": "1", "alternatives": "A" },
+            { "type": "key", "text": "2", "alternatives": "W" },
+            { "type": "key", "text": "3", "alternatives": "E" },
+            { "type": "key", "text": "4", "alternatives": "R" },
+            { "type": "key", "text": "5", "alternatives": "T" },
+            { "type": "key", "text": "6", "alternatives": "Y" },
+            { "type": "key", "text": "7", "alternatives": "U" },
+            { "type": "key", "text": "8", "alternatives": "I" },
+            { "type": "key", "text": "9", "alternatives": "O" },
+            { "type": "key", "text": "0", "alternatives": "P" },
+            { "type": "backspace" }
+        ],
+        [
+            { "type": "filler", "stretch": 0.32 },
+            { "type": "key", "text": "@" },
+            { "type": "key", "text": "#" },
+            { "type": "key", "text": "%" },
+            { "type": "key", "text": "&" },
+            { "type": "key", "text": "*" },
+            { "type": "key", "text": "-" },
+            { "type": "key", "text": "+" },
+            { "type": "key", "text": "(" },
+            { "type": "key", "text": ")" },
+            { "type": "enter", "stretch": 1.8 }
+        ],
+        [
+            { "type": "page", "text": "1/2", "stretch": 1.15 },
+            { "type": "key", "text": "!" },
+            { "type": "key", "text": "\"" },
+            { "type": "key", "text": "<" },
+            { "type": "key", "text": ">" },
+            { "type": "key", "text": "'" },
+            { "type": "key", "text": ":" },
+            { "type": "key", "text": ";" },
+            { "type": "key", "text": "/" },
+            { "type": "key", "text": "?" },
+            { "type": "page", "text": "1/2", "stretch": 1.3 }
+        ],
+        [
+            { "type": "symbol", "text": "ABC" },
+            { "type": "language" },
+            { "type": "space", "stretch": 4 },
+            { "type": "key", "text": "." },
+            { "type": "key", "text": ":-)", "alternatives": [ ";-)", ":-)", ":-D", ":-(", "<3" ] },
+            { "type": "hide" }
+        ]
+    ],
+    [
+        [
+            { "type": "key", "text": "~" },
+            { "type": "key", "text": "`" },
+            { "type": "key", "text": "|" },
+            { "type": "key", "text": "·" },
+            { "type": "key", "text": "√" },
+            { "type": "key", "text": "÷" },
+            { "type": "key", "text": "×" },
+            { "type": "key", "text": "½" },
+            { "type": "key", "text": "{" },
+            { "type": "key", "text": "}" },
+            { "type": "backspace" }
+        ],
+        [
+            { "type": "filler", "stretch": 0.32 },
+            { "type": "key", "text": "$" },
+            { "type": "key", "text": "€" },
+            { "type": "key", "text": "£" },
+            { "type": "key", "text": "¢" },
+            { "type": "key", "text": "¥" },
+            { "type": "key", "text": "=" },
+            { "type": "key", "text": "+" },
+            { "type": "key", "text": "[" },
+            { "type": "key", "text": "]" },
+            { "type": "enter", "stretch": 1.8 }
+        ],
+        [
+            { "type": "page", "text": "2/2", "stretch": 1.15 },
+            { "type": "key", "text": "_" },
+            { "type": "key", "text": "™" },
+            { "type": "key", "text": "®" },
+            { "type": "key", "text": "«" },
+            { "type": "key", "text": "»" },
+            { "type": "key", "text": "“" },
+            { "type": "key", "text": "”" },
+            { "type": "key", "text": "\\" },
+            { "type": "key", "text": "^" },
+            { "type": "page", "text": "2/2", "stretch": 1.3 }
+        ],
+        [
+            { "type": "symbol", "text": "ABC" },
+            { "type": "language" },
+            { "type": "space", "stretch": 4 },
+            { "type": "key", "text": "…" },
+            { "type": "key", "text": ":-)", "alternatives": [ ";-)", ":-)", ":-D", ":-(", "<3" ] },
+            { "type": "hide" }
+        ]
+    ]
+ ]
