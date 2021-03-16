@@ -1,10 +1,10 @@
 # OpenVirtualKeyboard
 
 Virtual keyboard used for Qt Quick applications. Implemented as in-process keyboard
-(loaded as plugin into yuor application). Even though it is not loaded with many features
+(loaded as plugin into your application). Even though it is not loaded with many features
 (handwriting, word suggestion, etc.), you may find it right fit for your project. It gives
-you option to customize style, layouts, appearance behaviour and some more feature. Plus it's
-free (MIT) and you can use it even in your commercial projects.
+you an option to customize style, layouts, appearance behaviour and some more features. Plus
+it's free (MIT) and you can use it even in your commercial projects.
 
 * [Features](#features)
 * [Integration](#integration)
@@ -82,7 +82,7 @@ of features it provides may be found at least interresting :)
 * follows input method hints (different layouts for alphabet, dial, digits, numbers or symbols)
 * key preview and key alternatives preview bubbles
 * customization of style (every single key type can be customized)
-* customization of layouts (add your own custom styles or different language layouts)
+* customization of layouts (add your own custom layouts or different language layouts)
 * auto uppercase when new sentence starts (follows Qt::ImhNoAutoUppercase hint)
 * roll out animation of keyboard panel (can be turned on/off)
 * keyboard panel in own window or injected into focused application window (configurable feature)
