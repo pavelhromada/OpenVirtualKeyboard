@@ -1,8 +1,10 @@
 # OpenVirtualKeyboard
 
-Virtual keyboard for Qt Quick based applications.
-
-... In-process keyboard
+Virtual keyboard used for Qt Quick applications. Implemented as in-process keyboard
+(loaded as plugin into yuor application). Even though it is not loaded with many features
+(handwriting, word suggestion, etc.), you may find it right fit for your project. It gives
+you option to customize style, layouts, appearance behaviour and some more feature. Plus it's
+free (MIT) and you can use it even in your commercial projects.
 
 * [Features](#features)
 * [Integration](#integration)
@@ -71,15 +73,23 @@ the top of my head, this is the todo list.
 
 # Features
 
-* works only with Qt Quick based UIs (not for widget based UIs)
-* enter key actions
-* shift + shift lock
-* input method hints
-* customization of style
-* customization of layouts
-* auto uppedrcase when new sentence starts
-* contentItem is scrolled to make focused TextField visible (only for injected keyboard)
-* TODO
+So far it is not feature rich as Android keyboard or original Qt virtual keyboard, but the list
+of features it provides may be found at least interresting :)
+
+* works with Qt Quick based UIs (not for widget based UIs)
+* support for special enter key actions (search, done, go, next, send, ...)
+* shift and shift lock feature
+* follows input method hints (different layouts for alphabet, dial, digits, numbers or symbols)
+* key preview and key alternatives preview bubbles
+* customization of style (every single key type can be customized)
+* customization of layouts (add your own custom styles or different language layouts)
+* auto uppercase when new sentence starts (follows Qt::ImhNoAutoUppercase hint)
+* roll out animation of keyboard panel (can be turned on/off)
+* keyboard panel in own window or injected into focused application window (configurable feature)
+* immediate vs. lazy loading of keyboard during application start (configurable)
+* auto scrolling of window contentItem to make focused input field visible (only for injected keyboard)
+* implementation is javascript free, key handling is done on C++ side and principle of Qt Quick Controls 2 is followed
+* ...
 
 # Integration
 
