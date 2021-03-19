@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef KEYBOARDLAYOUTSPROVIDER_H
 #define KEYBOARDLAYOUTSPROVIDER_H
 

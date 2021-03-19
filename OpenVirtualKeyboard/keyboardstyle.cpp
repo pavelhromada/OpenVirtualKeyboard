@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #include <QFile>
 #include "keyboardstyle.h"
 #include "utils.h"

@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef OPENVIRTUALKEYBOARDTPLUGIN_H
 #define OPENVIRTUALKEYBOARDTPLUGIN_H
 

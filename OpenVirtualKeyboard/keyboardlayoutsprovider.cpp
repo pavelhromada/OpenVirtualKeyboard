@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #include <QDir>
 #include <QJsonDocument>
 #include <QFile>

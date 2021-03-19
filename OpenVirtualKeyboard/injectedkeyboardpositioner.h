@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef INJECTEDKEYBOARDPOSITIONER_H
 #define INJECTEDKEYBOARDPOSITIONER_H
 

@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef KEYALTERNATIVESPREVIEW_H
 #define KEYALTERNATIVESPREVIEW_H
 

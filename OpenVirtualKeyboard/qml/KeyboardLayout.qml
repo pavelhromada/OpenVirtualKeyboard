@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import OpenVirtualKeyboard 1.0

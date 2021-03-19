@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef KEYPRESSINTERCEPTOR_H
 #define KEYPRESSINTERCEPTOR_H
 

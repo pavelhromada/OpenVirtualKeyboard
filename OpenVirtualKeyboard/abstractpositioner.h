@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef ABSTRACTPOSITIONER_H
 #define ABSTRACTPOSITIONER_H
 

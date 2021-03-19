@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #include <QUrl>
 #include <QQmlEngine>
 #include "openvirtualkeyboardinputcontext.h"

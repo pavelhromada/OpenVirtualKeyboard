@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef KEY_H
 #define KEY_H
 
@@ -41,7 +47,7 @@ public:
     QQuickItem* delegate() const;
 
 public slots:
-    void setType( Type type );
+    void setType( Key::Type type );
     void setAlternatives( const QVariant& alternatives );
     void setText( const QString& text );
     void setDelegate( QQuickItem* delegate );

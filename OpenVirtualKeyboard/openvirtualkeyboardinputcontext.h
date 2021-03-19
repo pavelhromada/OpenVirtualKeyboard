@@ -1,3 +1,9 @@
+/**
+ *  MIT License
+ *  Copyright (c) Pavel Hromada
+ *  See accompanying LICENSE file
+ */
+
 #ifndef OPENVIRTUALKEYBOARDINPUTCONTEXT_H
 #define OPENVIRTUALKEYBOARDINPUTCONTEXT_H
 
