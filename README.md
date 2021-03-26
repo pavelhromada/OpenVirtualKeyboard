@@ -1,14 +1,16 @@
 # OpenVirtualKeyboard
 
 Virtual keyboard used for Qt Quick applications. Implemented as in-process keyboard
-(loaded as plugin into your application). Even though it is not loaded with many features
+(loaded as plugin into your application). Even though it is not packed with many features
 (handwriting, word suggestion, etc.), you may find it right fit for your project. It gives
 you an option to customize style, layouts, appearance behaviour and some more features. Plus
-it's free (MIT) and you can use it even in your commercial projects.
+it's free (MIT) and you can use it even in your commercial projects. Implemented against and
+works with Qt 5.12 as minimal version.
 
 * [Features](#features)
 * [Integration](#integration)
     * [Basic usage](#basic-usage)
+    * [Direct usage of Keyboard component in your app window](#direct-usage-of-keyboard-component-in-your-app-window)
     * [Configuration](#configuration)
 * [Customizing keyboard style](#customizing-keyboard-style)
     * [Customizing keyboard background](#customizing-keyboard-background)
@@ -23,6 +25,7 @@ it's free (MIT) and you can use it even in your commercial projects.
     * [Customizing Symbol key](#customizing-symbol-key)
     * [Customizing Next Page key](#customizing-next-page-key)
     * [Customizing Language key](#customizing-language-key)
+    * [Customizing language menu](#customizing-language-menu)
 * [Customizing layouts](#customizing-layouts)
 * [Logging](#logging)
 * [Inspiration](#inspiration)
@@ -68,6 +71,7 @@ the top of my head, this is the todo list.
 - [x] follow Qt::ImhNoAutoUppercase hint
 - [x] press and hold for shift lock
 - [ ] optimizations
+   - [ ] allow disabling of some layout types (e.g. just use alphabet type and do not load dial, digits, ...) to optimize keyboard loading time
    - [ ] do not load all 4 layout rows if layout does not specify all rows
    - [ ] adapt height of keyboard based on count of keyboard rows
 
@@ -105,6 +109,10 @@ a two step process:
         └─ openvirtualkeyboard(.dll|.so)
 ```
 2. set *QT_IM_MODULE* environment variable like this `QT_IM_MODULE=openvirtualkeyboard`
+
+## Direct usage of Keyboard component in your app window
+
+TODO document + test + add example
 
 ## Configuration
 
@@ -144,6 +152,7 @@ no need to provide all qml style components, if someone wants to customize just 
 ## Customizing Symbol key
 ## Customizing Next Page key
 ## Customizing Language key
+## Customizing language menu
 
 # Customizing layouts
 

@@ -9,6 +9,9 @@
 *.so.*
 *.dll
 *.dylib
+*.exe
+*.ilk
+*.pdb
 
 # Qt-es
 object_script.*.Release
