@@ -53,6 +53,9 @@ void InjectedKeyboardPositioner::enableAnimation( bool enabled )
 
 void InjectedKeyboardPositioner::updateFocusItem( QQuickItem* focusItem )
 {
+    if (_focusItem != focusItem)
+        _focusItemChanged = true;
+
     _focusItem = focusItem;
     if (!_focusItem || !_keyboard)
         return;
@@ -90,9 +93,15 @@ void InjectedKeyboardPositioner::show()
         bool alreadyShown = _shown;
         _shown            = true;
 
-        if (alreadyShown)
+        if (alreadyShown) {
+            if (_focusItemChanged) {
+                updateContentItemPosition( true );
+                _focusItemChanged = false;
+            }
             return;
+        }
 
+        _focusItemChanged = false;
         updateContentItemPosition( true );
 
         if (_animation) {

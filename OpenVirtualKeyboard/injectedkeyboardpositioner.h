@@ -38,6 +38,7 @@ private:
     QPointer<QQuickItem>                _keyboard;
     QPointer<QQuickItem>                _contentItem;
     QPointer<QQuickItem>                _focusItem;
+    bool                                _focusItemChanged = false;
 };
 
 #endif // INJECTEDKEYBOARDPOSITIONER_H

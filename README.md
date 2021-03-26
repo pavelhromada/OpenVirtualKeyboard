@@ -51,8 +51,8 @@ the top of my head, this is the todo list.
 - [x] lazy loading vs immediate loading of keyboard (configuration parameter QT_IM_MODULE=openvirtualkeyboard:immediateLoading)
 - [x] keyboard in own top level window vs. keyboard component "injected" into applications window (configuration parameter QT_IM_MODULE=openvirtualkeyboard:ownWindow)
     - [x] show keyboard window on screen where focused TextInput window is located ?
-    - [ ] fix when contentItem is scrolled and and one clicks on another monitor and then into different TextField of window
-    - [ ] fix when focus is in text field and tab is pressed, comntentItem is not scrolled
+    - [x] fix when contentItem is scrolled and and one clicks on another monitor and then into different TextField of window
+    - [x] fix when focus is in text field and tab is pressed, comntentItem is not scrolled
     - [ ] why keyboard in own window is not animated when first time shown (only on second monitor)
     - [x] injected keyboard: setParentItem( focusedWindow->contentItem() )
 - [x] fix when application starts and keyboard is not loaded yet and someone clicks into TextFielkd
@@ -70,6 +70,7 @@ the top of my head, this is the todo list.
 - [x] repeating press
 - [x] follow Qt::ImhNoAutoUppercase hint
 - [x] press and hold for shift lock
+- [ ] clean-up default en-US layout (alternative characters, ...)
 - [ ] optimizations
    - [ ] allow disabling of some layout types (e.g. just use alphabet type and do not load dial, digits, ...) to optimize keyboard loading time
    - [ ] do not load all 4 layout rows if layout does not specify all rows
