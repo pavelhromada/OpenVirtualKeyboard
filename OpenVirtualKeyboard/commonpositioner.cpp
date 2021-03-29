@@ -122,7 +122,7 @@ void CommonPositioner::updateKeyPreview( Key* key )
     _keyPreview->setKeyWidth( key->width() );
     _keyPreview->setKeyHeight( key->height() );
     _keyPreview->setKeyText( key->text() );
-    auto previewDelegate = _keyPreview->delegate();
+    const auto previewDelegate = _keyPreview->delegate();
     _keyPreview->setWidth( previewDelegate->width() );
     _keyPreview->setHeight( previewDelegate->height() );
     _keyPreview->setY( topLeft.y() - ( previewDelegate->height() - key->height() ));
@@ -139,7 +139,7 @@ void CommonPositioner::updateAlternativesPreview( const QStringList& alternative
     _keyAlternatives->setKeyWidth( key->width() );
     _keyAlternatives->setKeyHeight( key->height() );
     _keyAlternatives->setAlternatives( alternativesModel );
-    auto previewDelegate = _keyAlternatives->delegate();
+    const auto previewDelegate = _keyAlternatives->delegate();
     _keyAlternatives->setWidth( previewDelegate->width() );
     _keyAlternatives->setHeight( previewDelegate->height() );
     _keyAlternatives->setY( topLeft.y() - ( previewDelegate->height() - key->height() ));

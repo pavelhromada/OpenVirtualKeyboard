@@ -7,11 +7,11 @@
 import QtQuick 2.12
 
 Rectangle {
-    radius: height * 0.08
-    color: parent.pressed ? Qt.lighter( "#333", 1.2 ) : "#333"
+    radius: height * 0.1
+    color: parent.pressed ? Qt.lighter( "#343434", 1.2 ) : "#343434"
     anchors {
         fill: parent
-        margins: parent.height * 0.07
+        margins: parent.height * 0.068
     }
 
     Text {

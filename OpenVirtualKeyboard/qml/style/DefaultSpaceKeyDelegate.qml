@@ -10,10 +10,10 @@ import QtQml 2.12
 Rectangle {
     id: bg
     radius: parent.height * 0.08
-    color: parent.pressed ? Qt.lighter( "#333", 1.2 ) : "#333"
+    color: parent.pressed ? Qt.lighter( "#343434", 1.2 ) : "#343434"
     anchors {
         fill: parent
-        margins: parent.height * 0.07
+        margins: parent.height * 0.068
     }
 
     Icon {

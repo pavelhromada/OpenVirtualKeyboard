@@ -42,8 +42,7 @@
         [
             { "type": "symbol", "text": "&123" },
             { "type": "language" },
-            { "type": "space", "stretch": 4 },
-            { "type": "key", "text": "'" },
+            { "type": "space", "stretch": 5 },
             { "type": "key", "text": ":-)", "alternatives": [ ";-)", ":-)", ":-D", ":-(", "<3" ] },
             { "type": "hide" }
         ]

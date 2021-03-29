@@ -46,7 +46,7 @@ void KeyPreview::setKeyText( const QString& keyText )
     emit keyTextChanged();
 }
 
-void KeyPreview::setKeyHeight(qreal keyHeight)
+void KeyPreview::setKeyHeight( qreal keyHeight )
 {
     if (qFuzzyCompare( _keyHeight, keyHeight ))
         return;

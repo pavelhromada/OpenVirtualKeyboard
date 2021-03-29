@@ -22,7 +22,7 @@ Item {
 
     objectName: "keyboard"
     width: parent ? parent.width : 0
-    height: width / 3
+    height: width * 0.34
 
     Component.onCompleted: InputContext.informKeyboardCreated()
 

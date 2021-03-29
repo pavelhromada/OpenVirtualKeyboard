@@ -15,6 +15,7 @@ var icons = {
     'left-open':    '\ue805',
     'search':       '\ue806',
     'cancel-alt':   '\ue807',
+    'down-open':    '\ue808',
     'link-ext':     '\uf08e',
     'keyboard':     '\uf11c',
     'level-down':   '\uf149',

@@ -6,23 +6,28 @@
 
 import QtQuick 2.12
 
-Rectangle {
-    height: parent.keyHeight * 2
-    width: parent.keyWidth
-    radius: parent.height * 0.08
-    color: "#444"
-    border {
-        width: 1
-        color: "#222"
-    }
+Item {
+    id: key
 
-    Text {
+    height: parent.keyHeight * 2.4
+    width: parent.keyWidth
+
+    Rectangle {
         anchors {
-            centerIn: parent
-            verticalCenterOffset: -(parent.parent.keyHeight / 2)
+            fill: parent
+            margins: key.parent.keyHeight * 0.068
         }
-        font.pixelSize: parent.parent.keyHeight * 0.4
-        text: parent.parent.keyText
-        color: "white"
+        radius: key.parent.keyHeight * 0.1
+        color: "#555"
+
+        Text {
+            anchors {
+                centerIn: parent
+                verticalCenterOffset: -(key.parent.keyHeight / 2)
+            }
+            font.pixelSize: key.parent.keyHeight * 0.44
+            text: key.parent.keyText
+            color: "white"
+        }
     }
 }
