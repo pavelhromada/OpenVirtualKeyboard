@@ -117,7 +117,7 @@ a two step process:
 Behaviour of the keyboard can be tweaked by additional optional parameters provided as colon
 separated values as part of QT_IM_MODULE environment variable. Full list of supported values
 looks like this `QT_IM_MODULE=openvirtualkeyboard:animateRollout:ownWindow:immediateLoading`, 
-but you can just use only the values you want and not all of them.
+but you can just use the values you want, not all of them.
 
 ### `animateRollout`
 
@@ -175,7 +175,7 @@ no need to provide all qml style components, if someone wants to customize just 
             └─ LanguageKey.qml
 ```
 Example how to implement own style can be found in `example/03_custom_style/out/platforminputcontexts/styles`.
-Example style from the example looks like following.
+Keyboard from the example looks like following.
 
 ![Alt text](img/custom-style.png?raw=true)
 
