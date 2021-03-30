@@ -1,34 +1,30 @@
 import QtQuick 2.12
+import "components"
 
-Rectangle {
-    radius: height * 0.08
-    color: enabled ? parent.pressed ? Qt.lighter( "#86af49", 1.1 ) : "#86af49"
-                   : Qt.darker( "#86af49", 1.2 )
-    anchors {
-        fill: parent
-        margins: parent.height * 0.07
-    }
+KeyBase {
+    id: key
 
-    Text {
+    color: enabled ? parent.active ? Qt.darker( "#abafba", 1.1 ) : "#abafba"
+                   : Qt.lighter( "#abafba", 1.2 )
+
+    Icon {
+        id: icon
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -(parent.height * 0.1)
-        font.pixelSize: parent.height * 0.5
-        color: enabled ? parent.parent.shiftOn ? "red" : "black"
-                       : parent.parent.shiftOn ? Qt.darker( "red", 2.0 ) : "grey"
-        text: "↑"
+        size: parent.height * 0.4
+        color: key.parent.enabled ? key.parent.shiftOn ? "#3478f2" : "black"
+                                  : key.parent.shiftOn ? Qt.darker( "#3478f2", 2.0 ) : "grey"
+        name: 'up'
     }
 
     Rectangle {
         height: parent.height * 0.08
         width: height
         radius: height / 2
-        color: enabled ? "red" : Qt.darker( "red", 2.0 )
-        visible: parent.parent.shiftLocked
+        color: key.parent.enabled ? "#3478f2" : Qt.darker( "#3478f2", 2.0 )
+        visible: key.parent.shiftLocked
         anchors {
-            left: parent.left
-            top: parent.top
-            leftMargin: parent.width / 3
-            topMargin: parent.height / 3
+            left: icon.left
+            top: icon.top
         }
     }
 }

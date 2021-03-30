@@ -1,20 +1,14 @@
 import QtQuick 2.12
+import "components"
 
-Rectangle {
-    radius: height * 0.08
-    color: enabled ? parent.pressed ? Qt.lighter( "#c94c4c", 1.1 ) : "#c94c4c"
-                   : Qt.darker( "#c94c4c", 1.2 )
-    anchors {
-        fill: parent
-        margins: parent.height * 0.07
-    }
-    
-    Text {
-        text: "←"
-        verticalAlignment: Text.AlignVCenter
+KeyBase {
+    color: enabled ? parent.active ? Qt.darker( "#abafba", 1.1 ) : "#abafba"
+                   : Qt.lighter( "#abafba", 1.2 )
+
+    Icon {
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -(parent.height * 0.1)
-        color: "white"
-        font.pixelSize: parent.width * 0.5
+        size: parent.height * 0.32
+        color: "black"
+        name: 'cancel-alt'
     }
 }

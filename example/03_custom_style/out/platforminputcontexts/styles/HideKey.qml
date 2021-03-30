@@ -1,18 +1,27 @@
 import QtQuick 2.12
+import "components"
 
-Rectangle {
-    radius: height * 0.08
-    color: enabled ? parent.pressed ? Qt.lighter( "#222", 1.1 ) : "#222"
-                   : Qt.darker( "#222", 1.2 )
-    anchors {
-        fill: parent
-        margins: parent.height * 0.07
+KeyBase {
+    color: enabled ? parent.active ? Qt.darker( "#abafba", 1.1 ) : "#abafba"
+                   : Qt.lighter( "#abafba", 1.2 )
+
+    Icon {
+        anchors {
+            centerIn: parent
+            verticalCenterOffset: -parent.height * 0.12
+        }
+        size: parent.height * 0.4
+        color: "black"
+        name: 'keyboard'
     }
 
-    Text {
-        text: "▼"
-        anchors.centerIn: parent
-        color: "white"
-        font.pixelSize: parent.height * 0.3
+    Icon {
+        anchors {
+            centerIn: parent
+            verticalCenterOffset: parent.height * 0.2
+        }
+        size: parent.height * 0.3
+        color: "black"
+        name: 'down-open'
     }
 }

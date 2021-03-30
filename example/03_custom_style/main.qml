@@ -17,7 +17,7 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
 
         Label {
-            text: "Tap to enter text with and see keyboard with custom style.<br><br>"
+            text: "Tap to enter text and see keyboard with custom style.<br><br>"
                   + "Styles can be found in ./out/platforminputcontexts/styles"
             horizontalAlignment: Text.AlignHCenter
             Layout.fillWidth: true

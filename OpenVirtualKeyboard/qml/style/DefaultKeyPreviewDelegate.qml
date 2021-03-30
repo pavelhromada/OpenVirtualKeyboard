@@ -23,7 +23,7 @@ Item {
         Text {
             anchors {
                 centerIn: parent
-                verticalCenterOffset: -(key.parent.keyHeight / 2)
+                verticalCenterOffset: -(key.parent.keyHeight * 0.68)
             }
             font.pixelSize: key.parent.keyHeight * 0.44
             text: key.parent.keyText

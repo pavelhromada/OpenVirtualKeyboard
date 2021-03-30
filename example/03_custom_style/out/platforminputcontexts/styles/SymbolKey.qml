@@ -1,18 +1,13 @@
 import QtQuick 2.12
+import "components"
 
-Rectangle {
-    radius: height * 0.08
-    color: enabled ? parent.pressed ? Qt.lighter( "#222", 1.1 ) : "#222"
-                   : Qt.darker( "#222", 1.2 )
-    anchors {
-        fill: parent
-        margins: parent.height * 0.07
-    }
-
+KeyBase {
+    color: enabled ? parent.active ? Qt.darker( "#abafba", 1.1 ) : "#abafba"
+                   : Qt.lighter( "#abafba", 1.2 )
     Text {
         anchors.centerIn: parent
         font.pixelSize: parent.height * 0.3
-        color: "white"
+        color: "black"
         text: parent.parent.text
     }
 }

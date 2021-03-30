@@ -7,8 +7,7 @@
 int main( int argc, char* argv[] )
 {
 //    qputenv( "QT_IM_MODULE", "openvirtualkeyboard" );
-    qputenv( "QT_IM_MODULE", "openvirtualkeyboard:immediateLoading" );
-//    qputenv( "QT_IM_MODULE", "openvirtualkeyboard:immediateLoading:animateRollout" );
+    qputenv( "QT_IM_MODULE", "openvirtualkeyboard:immediateLoading:animateRollout" );
 
     QCoreApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
     QLoggingCategory::setFilterRules( "openvirtualkeyboard=true" );

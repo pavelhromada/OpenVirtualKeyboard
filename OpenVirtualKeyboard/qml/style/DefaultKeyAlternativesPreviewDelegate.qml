@@ -38,7 +38,7 @@ Item {
                     font.pixelSize: key.parent.keyHeight * 0.44
                     anchors {
                         centerIn: parent
-                        verticalCenterOffset: -(key.parent.keyHeight / 2)
+                        verticalCenterOffset: -(key.parent.keyHeight * 0.68)
                     }
                 }
             }
