@@ -27,8 +27,6 @@ OpenVirtualKeyboardInputContext::OpenVirtualKeyboardInputContext( const QStringL
     _keyboardComponentUrl = inOwnWindow ? QUrl( "qrc:///ovk/qml/KeyboardWindow.qml" )
                                         : QUrl( "qrc:///ovk/qml/Keyboard.qml" );
 
-    _layoutsProvider.reset( new KeyboardLayoutsProvider );
-
     if (params.contains( QStringLiteral("immediateLoading"), Qt::CaseInsensitive ))
         loadKeyboard();
 
@@ -444,6 +442,8 @@ QQuickItem* OpenVirtualKeyboardInputContext::imEnabledFocusItem() const
 
 void OpenVirtualKeyboardInputContext::loadKeyboard()
 {
+    _layoutsProvider.reset( new KeyboardLayoutsProvider );
+
     if (!_keyboardCreator) {
         _keyboardCreator.reset( new KeyboardCreator( _keyboardComponentUrl ));
 
