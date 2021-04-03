@@ -5,6 +5,8 @@
  */
 
 #include "injectedkeyboardpositioner.h"
+#include <chrono>
+#include <QGuiApplication>
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QTimer>
@@ -29,6 +31,12 @@ void InjectedKeyboardPositioner::setKeyboardObject( QObject* keyboardObject )
 
     if (_contentItem)
         _keyboard->setY( _contentItem->height() );
+
+    connect( qGuiApp,
+             &QGuiApplication::applicationStateChanged,
+             this,
+             &InjectedKeyboardPositioner::onApplicationStateChanged );
+    onApplicationStateChanged( qGuiApp->applicationState() );
 }
 
 void InjectedKeyboardPositioner::enableAnimation( bool enabled )
@@ -84,7 +92,9 @@ void InjectedKeyboardPositioner::show()
     // called setFocusObject() and showInputPanel() in wrong order (for our purposes)
     // and this way we walked around some UI imperfect behaviour.
 
-    QTimer::singleShot( 0, this, [this] {
+    std::chrono::milliseconds milliseconds( _animation ? _appStateReactivated ? 100 : 0 : 0 );
+
+    QTimer::singleShot( milliseconds, this, [this] {
         if (!_keyboard || !_contentItem) {
             _shown = false;
             return;
@@ -169,8 +179,22 @@ void InjectedKeyboardPositioner::onHeightChanged()
         _keyboard->setY( _contentItem->height() + _offset );
 }
 
+void InjectedKeyboardPositioner::onApplicationStateChanged( Qt::ApplicationState s )
+{
+    static bool wasAlreadyActive = false;
+
+    if (s == Qt::ApplicationActive) {
+        if (wasAlreadyActive)
+            _appStateReactivated = true;
+        wasAlreadyActive = true;
+    } else if (s == Qt::ApplicationInactive)
+        qGuiApp->inputMethod()->hide();
+}
+
 void InjectedKeyboardPositioner::onAnimationFinished()
 {
+    _appStateReactivated = false;
+
     if (!_shown) {
         _contentItem->setY( 0 );
         _keyboard->setY( _contentItem->height() );

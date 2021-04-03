@@ -30,6 +30,7 @@ public:
 private:
     void updateContentItemPosition( bool updateKeyboardPosition );
     void onHeightChanged();
+    void onApplicationStateChanged( Qt::ApplicationState s );
     void onAnimationFinished();
 
     bool                                _shown  = false;
@@ -39,6 +40,8 @@ private:
     QPointer<QQuickItem>                _contentItem;
     QPointer<QQuickItem>                _focusItem;
     bool                                _focusItemChanged = false;
+    bool                                _appStateReactivated = false; // To mitigate issue when
+                                                                      // app is inactive/active.
 };
 
 #endif // INJECTEDKEYBOARDPOSITIONER_H
