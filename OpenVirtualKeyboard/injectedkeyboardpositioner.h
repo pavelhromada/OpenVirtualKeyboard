@@ -17,7 +17,7 @@ class InjectedKeyboardPositioner : public CommonPositioner
 {
     Q_OBJECT
 public:
-    InjectedKeyboardPositioner();
+    InjectedKeyboardPositioner( bool noContentScroll );
     ~InjectedKeyboardPositioner() override;
 
     void setKeyboardObject( QObject* keyboardObject ) override;
@@ -33,6 +33,7 @@ private:
     void onApplicationStateChanged( Qt::ApplicationState s );
     void onAnimationFinished();
 
+    bool                                _scrollContentItem = true;
     bool                                _shown  = false;
     qreal                               _offset = 0;
     std::unique_ptr<QPropertyAnimation> _animation;

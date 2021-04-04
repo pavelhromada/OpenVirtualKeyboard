@@ -11,7 +11,10 @@
 #include <QQuickWindow>
 #include <QTimer>
 
-InjectedKeyboardPositioner::InjectedKeyboardPositioner() = default;
+InjectedKeyboardPositioner::InjectedKeyboardPositioner( bool noContentScroll )
+    : _scrollContentItem( !noContentScroll )
+{ }
+
 InjectedKeyboardPositioner::~InjectedKeyboardPositioner() = default;
 
 void InjectedKeyboardPositioner::setKeyboardObject( QObject* keyboardObject )
@@ -161,7 +164,9 @@ void InjectedKeyboardPositioner::updateContentItemPosition( bool updateKeyboardP
     auto focusItemBottom = _contentItem->mapFromItem( _focusItem, QPointF( 0, 0 )).y()
         + _focusItem->height() + 5; // count with 5px spacing
     auto keyboardTop = _contentItem->height() - _keyboard->height();
-    _offset = focusItemBottom > keyboardTop ? focusItemBottom - keyboardTop : 0;
+    _offset = _scrollContentItem
+                 ? focusItemBottom > keyboardTop ? focusItemBottom - keyboardTop : 0
+                 : 0;
     _contentItem->setY( -_offset );
     if (updateKeyboardPosition)
         _keyboard->setY(( _shown ? keyboardTop : _contentItem->height() ) + _offset );

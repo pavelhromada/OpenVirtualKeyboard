@@ -23,6 +23,8 @@ OpenVirtualKeyboardInputContext::OpenVirtualKeyboardInputContext( const QStringL
 {
     const bool animated    = params.contains( QStringLiteral("animateRollout"), Qt::CaseInsensitive );
     const bool inOwnWindow = params.contains( QStringLiteral("ownWindow"), Qt::CaseInsensitive );
+    const bool noScroll =
+        params.contains( QStringLiteral( "noContentScrolling" ), Qt::CaseInsensitive );
 
     _keyboardComponentUrl = inOwnWindow ? QUrl( "qrc:///ovk/qml/KeyboardWindow.qml" )
                                         : QUrl( "qrc:///ovk/qml/Keyboard.qml" );
@@ -30,7 +32,7 @@ OpenVirtualKeyboardInputContext::OpenVirtualKeyboardInputContext( const QStringL
     if (params.contains( QStringLiteral("immediateLoading"), Qt::CaseInsensitive ))
         loadKeyboard();
 
-    _positioner.reset( createPositioner( inOwnWindow ));
+    _positioner.reset( createPositioner( inOwnWindow, noScroll ));
     _positioner->enableAnimation( animated );
 
     connect( qGuiApp, &QGuiApplication::applicationStateChanged, this, []( Qt::ApplicationState s ){
@@ -546,9 +548,10 @@ bool OpenVirtualKeyboardInputContext::isShiftDoubleClicked() const
     return isDoubleClicked;
 }
 
-AbstractPositioner* OpenVirtualKeyboardInputContext::createPositioner( bool inOwnWindow ) const
+AbstractPositioner* OpenVirtualKeyboardInputContext::createPositioner( bool inOwnWindow,
+                                                                       bool noContentScroll ) const
 {
     if (inOwnWindow)
         return new KeyboardWindowPositioner;
-    return new InjectedKeyboardPositioner;
+    return new InjectedKeyboardPositioner( noContentScroll );
 }

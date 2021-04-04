@@ -54,11 +54,12 @@ the top of my head, this is the todo list.
     - [x] fix when contentItem is scrolled and and one clicks on another monitor and then into different TextField of window
     - [x] fix when focus is in text field and tab is pressed, comntentItem is not scrolled
     - [ ] why keyboard in own window is not animated when first time shown (only on second monitor)
-    - [ ] fix position of keyboard when displayed and one clicks another window and then back onto keyboard window but into different input (animationRollout enabled) 
+    - [x] fix position of keyboard when displayed and one clicks another window and then back onto keyboard window but into different input (animationRollout enabled) 
     - [x] injected keyboard: setParentItem( focusedWindow->contentItem() )
 - [x] fix when application starts and keyboard is not loaded yet and someone clicks into TextFielkd
 - [x] focus item overlap
     - [x] make focused input component visible even if keyboard overlaps it (scroll contentItem)
+    - [x] make contentItem scrolling optional (QT_IM_MODULE=openvirtualkeyboard:noContentScrolling)
     - [x] use mapToItem when handling overlap
     - [x] animated keyboard show/hide (configuration parameter QT_IM_MODULE=openvirtualkeyboard:animateRollout)
 - [ ] fullscreen mode
@@ -131,7 +132,7 @@ animation won't be used.
 When set, keyboard will be rendered in own window and fills full width of the screen where
 it is shown. Keyboard in own window always follows the screen where focused input field window
 is displayed. Therefore if you have multiple screens and move focused window from one screen
-to another, keyboard will render itself on that screen as well. If ownWindow is not set (default),
+to another, keyboard will render itself on that screen as well. If `ownWindow` is not set (default),
 keyboard will be "injected" into window where input field was focused. Injected keyboard always
 follows focused window and therefore works properly also for multi-windowed applications.
 
@@ -139,15 +140,23 @@ follows focused window and therefore works properly also for multi-windowed appl
 
 Because this keyboard is implemented as in-process type of keyboard and is loaded as plugin when
 application is about to start, it may slightly affect loading time of the application. You have
-an option to tweak the behaviour based on your requirements. By default (immediateLoading not set),
+an option to tweak the behaviour based on your requirements. By default (`immediateLoading` not set),
 keyboard component is loaded when first time requested by application (input field focused). Loading
 of keyboard component means loading of all QMLs which defines keyboard UI and all the layouts. So
 in this case, when input field is focused for the first time, there may be a short time visible until
 keyboard is loaded and displayed.
 
-On the other hand, when immediateLoading is set, start time of application may be affected little bit,
+On the other hand, when `immediateLoading` is set, start time of application may be affected little bit,
 but keyboard is then displayed instantly when requested by application, even when it is displaying for
 the first time.
+
+### `noContentScrolling`
+
+> **Note:** This has effect only when `ownWindow` is not defined.
+
+When keyboard by its height overlaps focused text input, contentItem of the window is scrolled
+so that the text input is still visible. This automatic scrolling can be disabled by setting
+`noContentScrolling` into list of additional parameters set to QT_IM_MODULE environment variable.
 
 ## Direct usage of Keyboard component in your app window
 
