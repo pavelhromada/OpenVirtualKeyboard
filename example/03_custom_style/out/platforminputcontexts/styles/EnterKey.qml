@@ -6,13 +6,6 @@ KeyBase {
     color: enabled ? parent.active ? Qt.darker( "#3478f2", 1.1 ) : "#3478f2"
                    : Qt.lighter( "#3478f2", 1.2 )
 
-//    Text {
-//        text: "Search"
-//        anchors.centerIn: parent
-//        color: "white"
-//        font.pixelSize: parent.height * 0.3
-//    }
-
     Icon {
         id: icon
         anchors.centerIn: parent

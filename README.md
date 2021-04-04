@@ -11,13 +11,16 @@ works with Qt 5.12 as minimal version.
 * [Integration](#integration)
     * [Basic usage](#basic-usage)
     * [Configuration](#configuration)
+       * [animateRollout](#animaterollout)
+       * [ownWindow](#ownwindow)
+       * [immediateLoading](#immediateloading)
+       * [noContentScrolling](#nocontentscrolling)
     * [Direct usage of Keyboard component in your app window](#direct-usage-of-keyboard-component-in-your-app-window)
 * [Customizing keyboard style](#customizing-keyboard-style)
     * [Customizing keyboard background](#customizing-keyboard-background)
-    * [Customizing character preview](#customizing-character-preview)
-    * [Customizing alternative characters preview](#customizing-alternative-characters-preview)
     * [Customizing default key](#customizing-default-key)
     * [Customizing Enter key](#customizing-enter-key)
+       * [Enter key actions manipulation](#enter-key-actions-manipulation)
     * [Customizing Backspace key](#customizing-backspace-key)
     * [Customizing Shift key](#customizing-shift-key)
     * [Customizing Space key](#customizing-space-key)
@@ -26,6 +29,8 @@ works with Qt 5.12 as minimal version.
     * [Customizing Next Page key](#customizing-next-page-key)
     * [Customizing Language key](#customizing-language-key)
     * [Customizing language menu](#customizing-language-menu)
+    * [Customizing character preview](#customizing-character-preview)
+    * [Customizing alternative characters preview](#customizing-alternative-characters-preview)
 * [Customizing layouts](#customizing-layouts)
 * [Logging](#logging)
 * [Inspiration](#inspiration)
@@ -164,8 +169,14 @@ TODO document + test + add example
 
 # Customizing keyboard style
 
-TODO components in 'styles' directory next to plugin or explicitly declared VirtualKeyboard in application and set styles
-no need to provide all qml style components, if someone wants to customize just Enter key, thet just add EnterKey.qml into styes directory
+Style of keyboard is fully customizable, which means that you can provide your own style for every
+key type, keyboard background, key and key alternatives preview bubbles and layout (language)
+selection menu. You don't have to provide style for all of these mentioned, but if you're interested
+in changing style for e.g. enter button only, you just create style for that key type and the default
+style will be used for all the rest.
+
+To define new style you just have to add subdirectory `styles` with specific QML files next to keyboard
+plugin library as following.
 
 ```
     ├─ yourApplication(.exe)
@@ -181,19 +192,157 @@ no need to provide all qml style components, if someone wants to customize just 
             ├─ HideKey.qml
             ├─ SymbolKey.qml
             ├─ NextPageKey.qml
-            └─ LanguageKey.qml
+            ├─ KeyPreview.qml
+            ├─ KeyAlternativesPreview.qml
+            ├─ LanguageKey.qml
+            └─ LanguageMenu.qml
 ```
-Example how to implement own style can be found in `example/03_custom_style/out/platforminputcontexts/styles`.
-Keyboard from the example looks like following.
+Particular style components may be provided with specific parent properties which should be used in
+style implementation (text property for plain key style, shift state etc.). See sections below.
+
+> **Example:** for complete example of how to implement own style, you can inspire yourself with
+`example/03_custom_style/out/platforminputcontexts/styles`. Keyboard from the example looks
+like following.
 
 ![Alt text](img/custom-style.png?raw=true)
 
 ## Customizing keyboard background
-## Customizing character preview
-## Customizing alternative characters preview
+
+It defines whole background of keyboard panel. Simplest style would be just colored rectangle. But
+image may work as well. 
+
+<table>
+  <tr>
+    <th>Style file name</th>
+    <td><code>Background.qml</code></td>
+  </tr>
+  <tr>
+    <th>Available parent properties</th>
+    <td><code><i>none</i></code></td>
+  </tr>
+</table>
+
+```qml
+import QtQuick 2.12
+
+Rectangle {
+    color: "#cfd2d9"
+}
+```
+
 ## Customizing default key
+
+Defines the style for plain non special key with character (alphabet, number or symbol).
+
+<table>
+  <tr>
+    <th>Style file name</th>
+    <td><code>Key.qml</code></td>
+  </tr>
+  <tr>
+    <th>Available parent properties</th>
+    <td><code>parent.active (key pressed and hovered)<br>parent.text</code></td>
+  </tr>
+</table>
+
+```qml
+import QtQuick 2.12
+
+Rectangle {
+    color: parent.active ? Qt.lighter( "#343434", 1.2 ) : "#343434"
+    anchors.fill: parent
+
+    Text {
+        anchors.centerIn: parent
+        font.pixelSize: parent.height * 0.4
+        color: "white"
+        text: parent.parent.text
+    }
+}
+```
+
 ## Customizing Enter key
+
+<table>
+  <tr>
+    <th>Style file name</th>
+    <td><code>EnterKey.qml</code></td>
+  </tr>
+  <tr>
+    <th>Available parent properties</th>
+    <td><code>parent.active (bool - key pressed and hovered)<br>parent.enterKeyActionEnabled
+     (bool, same as parent.enabled)<br>parent.enterKeyAction (int - one of Qt::EnterKeyType enum values)</code></td>
+  </tr>
+</table>
+
+```qml
+import QtQuick 2.12
+
+Rectangle {
+    id: key
+    color: enabled ? parent.active ? Qt.darker( "#3478f2", 1.1 ) : "#3478f2"
+                   : Qt.lighter( "#3478f2", 1.2 )
+    anchors.fill: parent
+
+    Text {
+        anchors.centerIn: parent
+        color: "white"
+        font.pixelSize: parent.height * 0.3
+        text: {
+            if (key.parent.enterKeyAction === Qt.EnterKeySearch)
+                return "Search"
+            else if (key.parent.enterKeyAction === Qt.EnterKeyDone)
+                return "Done"
+            else if (key.parent.enterKeyAction === Qt.EnterKeyGo)
+                return "Go"
+            else if (key.parent.enterKeyAction === Qt.EnterKeySend)
+                return "Send"
+            else if (key.parent.enterKeyAction === Qt.EnterKeyNext)
+                return "->"
+            else if (key.parent.enterKeyAction === Qt.EnterKeyPrevious)
+                return "<-"
+            else
+                return "Enter"
+        }
+    }
+}
+```
+
+### Enter key actions manipulation
+
+From your application you can provide hint about special Enter key handling by keyboard via
+definition of two additional properties (`enterKeyActionEnabled` and `enterKeyAction`) to text
+input component. Virtual keyboard will check if these properties are defined on focused text 
+input field and uses their values to visualise state of Enter key properly.
+
+Example:
+```qml
+TextField {
+    property bool enterKeyActionEnabled: text.length > 0 // Enter key will be disabled
+                                                         // on virtual keyboard and also Enter
+                                                         // key style should properly display
+                                                         // disabled state
+
+    property int enterKeyAction: Qt.EnterKeySearch // virtual keyboard's Enter key style should
+                                                   // display 'Search' text or appropriate icon
+}
+```
+
 ## Customizing Backspace key
+
+<table>
+  <tr>
+    <th>Style file name</th>
+    <td><code>BackspaceKey.qml</code></td>
+  </tr>
+  <tr>
+    <th>Available parent properties</th>
+    <td><code>parent.active (bool - key pressed and hovered)</code></td>
+  </tr>
+</table>
+
+Style for bckspace key should just display backspace icon or backspace text, no more no less.
+
 ## Customizing Shift key
 ## Customizing Space key
 ## Customizing Hide key
@@ -201,6 +350,8 @@ Keyboard from the example looks like following.
 ## Customizing Next Page key
 ## Customizing Language key
 ## Customizing language menu
+## Customizing character preview
+## Customizing alternative characters preview
 
 # Customizing layouts
 
