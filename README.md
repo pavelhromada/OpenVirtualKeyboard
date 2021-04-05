@@ -23,6 +23,7 @@ works with Qt 5.12 as minimal version.
        * [Enter key actions manipulation](#enter-key-actions-manipulation)
     * [Customizing Backspace key](#customizing-backspace-key)
     * [Customizing Shift key](#customizing-shift-key)
+       * [Shift and shift lock activation](#shift-and-shift-lock-activation)
     * [Customizing Space key](#customizing-space-key)
     * [Customizing Hide key](#customizing-hide-key)
     * [Customizing Symbol key](#customizing-symbol-key)
@@ -122,7 +123,7 @@ a two step process:
 
 Behaviour of the keyboard can be tweaked by additional optional parameters provided as colon
 separated values as part of QT_IM_MODULE environment variable. Full list of supported values
-looks like this `QT_IM_MODULE=openvirtualkeyboard:animateRollout:ownWindow:immediateLoading`, 
+looks like this `QT_IM_MODULE=openvirtualkeyboard:animateRollout:ownWindow:immediateLoading:noContentScrolling`, 
 but you can just use the values you want, not all of them.
 
 ### `animateRollout`
@@ -197,7 +198,7 @@ plugin library as following.
             ├─ LanguageKey.qml
             └─ LanguageMenu.qml
 ```
-Particular style components may be provided with specific parent properties which should be used in
+Particular style components reference to specific parent properties which should be used in
 style implementation (text property for plain key style, shift state etc.). See sections below.
 
 > **Example:** for complete example of how to implement own style, you can inspire yourself with
@@ -211,16 +212,9 @@ like following.
 It defines whole background of keyboard panel. Simplest style would be just colored rectangle. But
 image may work as well. 
 
-<table>
-  <tr>
-    <th>Style file name</th>
-    <td><code>Background.qml</code></td>
-  </tr>
-  <tr>
-    <th>Available parent properties</th>
-    <td><code><i>none</i></code></td>
-  </tr>
-</table>
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `Background.qml` | `none` |
 
 ```qml
 import QtQuick 2.12
@@ -234,46 +228,31 @@ Rectangle {
 
 Defines the style for plain non special key with character (alphabet, number or symbol).
 
-<table>
-  <tr>
-    <th>Style file name</th>
-    <td><code>Key.qml</code></td>
-  </tr>
-  <tr>
-    <th>Available parent properties</th>
-    <td><code>parent.active (key pressed and hovered)<br>parent.text</code></td>
-  </tr>
-</table>
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `Key.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.text (string - key character)` |
 
 ```qml
 import QtQuick 2.12
 
 Rectangle {
+    id: key
     color: parent.active ? Qt.lighter( "#343434", 1.2 ) : "#343434"
     anchors.fill: parent
 
     Text {
         anchors.centerIn: parent
-        font.pixelSize: parent.height * 0.4
         color: "white"
-        text: parent.parent.text
+        text: key.parent.text
     }
 }
 ```
 
 ## Customizing Enter key
 
-<table>
-  <tr>
-    <th>Style file name</th>
-    <td><code>EnterKey.qml</code></td>
-  </tr>
-  <tr>
-    <th>Available parent properties</th>
-    <td><code>parent.active (bool - key pressed and hovered)<br>parent.enterKeyActionEnabled
-     (bool, same as parent.enabled)<br>parent.enterKeyAction (int - one of Qt::EnterKeyType enum values)</code></td>
-  </tr>
-</table>
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `EnterKey.qml`<!-- .element: style="vertical-align: top;" --> | `parent.active (bool - key pressed and hovered)`<br>`parent.enterKeyActionEnabled (bool - key is enabled/disabled)`<br>`parent.enabled/enabled (bool - same as parent.enterKeyActionEnabled)`<br>`parent.enterKeyAction (int - one of Qt::EnterKeyType enum values)` |
 
 ```qml
 import QtQuick 2.12
@@ -287,7 +266,6 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         color: "white"
-        font.pixelSize: parent.height * 0.3
         text: {
             if (key.parent.enterKeyAction === Qt.EnterKeySearch)
                 return "Search"
@@ -318,7 +296,7 @@ input field and uses their values to visualise state of Enter key properly.
 Example:
 ```qml
 TextField {
-    property bool enterKeyActionEnabled: text.length > 0 // Enter key will be disabled
+    property bool enterKeyActionEnabled: text.length > 0 // Enter key will be enabled/disabled
                                                          // on virtual keyboard and also Enter
                                                          // key style should properly display
                                                          // disabled state
@@ -330,25 +308,105 @@ TextField {
 
 ## Customizing Backspace key
 
-<table>
-  <tr>
-    <th>Style file name</th>
-    <td><code>BackspaceKey.qml</code></td>
-  </tr>
-  <tr>
-    <th>Available parent properties</th>
-    <td><code>parent.active (bool - key pressed and hovered)</code></td>
-  </tr>
-</table>
+Style for the backspace key should just display backspace icon or backspace text, no more no less.
 
-Style for bckspace key should just display backspace icon or backspace text, no more no less.
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `BackspaceKey.qml` | `parent.active (bool - key pressed and hovered)` |
 
 ## Customizing Shift key
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `ShiftKey.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.enabled/enabled (bool - key is enabled/disabled)`<br>`parent.shiftOn (bool - shift is active for one character input)`<br>`parent.shiftLocked (bool - shift is active for multiple characters input; like caps lock)` |
+
+```qml
+import QtQuick 2.12
+
+Rectangle {
+    id: key
+    color: parent.active ? Qt.darker( "#3478f2", 1.1 ) : "#3478f2"
+    anchors.fill: parent
+
+    Text {
+        anchors.centerIn: parent
+        font.bold: key.parent.shiftOn
+        font.underline: key.parent.shiftLocked
+        color: "white"
+        text: "Shift"
+    }
+}
+```
+
+### Shift and shift lock activation
+
+Shift can be activated/deactivated by single click on shift key. By double click or press and hold,
+shift lock (a.k.a. caps lock)is activated/deactivated. Moreover state of the shift key is distinguished
+from input method hints of focused text input field.
+
+Example:
+```qml
+TextField {
+    inputMethodHints: ... // check Qt documentation for Qt.ImhNoAutoUppercase, Qt.ImhPreferUppercase, Qt.ImhUppercaseOnly
+}
+```
+
 ## Customizing Space key
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `SpaceKey.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.selectedLayout (string - name of selected language layout)` |
+
+```qml
+import QtQuick 2.12
+import QtQml 2.12
+
+Rectangle {
+    id: key
+    color: parent.active ? Qt.lighter( "#343434", 1.2 ) : "#343434"
+    anchors.fill: parent
+
+    Text {
+        anchors.centerIn: parent
+        font.pixelSize: parent.height * 0.4
+        color: "dimgray"
+        text: Qt.locale( key.parent.selectedLayout ).nativeLanguageName
+    }
+}
+```
+
 ## Customizing Hide key
+
+Style for the hide key should just display hide keyboard icon or appropriate text, no more no less.
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `HideKey.qml` | `parent.active (bool - key pressed and hovered)` |
+
 ## Customizing Symbol key
+
+Style for the symbol key, which serves to switch between alphabet and symbol keyboard layout.
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `SymbolKey.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.text (string - text for symbol key taken from layout definition; usualy "&123")` |
+
 ## Customizing Next Page key
+
+Style for the next page key, which serves to switch between the pages of currently displayed layout.
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `NextPageKey.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.text (string - text for next page key taken from layout definition; usualy "1/2", "2/2", etc.)` |
+
 ## Customizing Language key
+
+Style for the language layout selection key should just display appropriate icon or text, no more no less.
+
+| Style file name | Available parent properties |
+| :--- | :--- |
+| `LanguageKey.qml` | `parent.active (bool - key pressed and hovered)`<br>`parent.enabled/enabled (bool - key is enabled/disabled; when there are no language layouts to select from)` |
+
 ## Customizing language menu
 ## Customizing character preview
 ## Customizing alternative characters preview
