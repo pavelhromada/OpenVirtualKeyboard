@@ -6,8 +6,9 @@
 
 int main( int argc, char* argv[] )
 {
-//    qputenv( "QT_IM_MODULE", "openvirtualkeyboard" );
-    qputenv( "QT_IM_MODULE", "openvirtualkeyboard:immediateLoading:animateRollout" );
+    // You may try to add any of the following optional parameters:
+    // :animateRollout:immediateLoading:ownWindow:noContentScrolling
+    qputenv( "QT_IM_MODULE", "openvirtualkeyboard:animateRollout" );
 
     QCoreApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
     QLoggingCategory::setFilterRules( "openvirtualkeyboard=true" );
