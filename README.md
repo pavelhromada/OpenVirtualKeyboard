@@ -1,4 +1,4 @@
-# OpenVirtualKeyboard
+# Open Virtual Keyboard
 
 Virtual keyboard used for Qt Quick applications. Implemented as in-process keyboard
 (loaded as plugin into your application). Even though it is not packed with many features
@@ -347,7 +347,10 @@ from input method hints of focused text input field.
 Example:
 ```qml
 TextField {
-    inputMethodHints: ... // check Qt documentation for Qt.ImhNoAutoUppercase, Qt.ImhPreferUppercase, Qt.ImhUppercaseOnly
+    inputMethodHints: ... // check Qt documentation for
+                          //    Qt.ImhNoAutoUppercase
+                          //    Qt.ImhPreferUppercase
+                          //    Qt.ImhUppercaseOnly
 }
 ```
 
