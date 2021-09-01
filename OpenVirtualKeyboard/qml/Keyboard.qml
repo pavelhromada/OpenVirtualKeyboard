@@ -23,6 +23,8 @@ Item {
     objectName: "keyboard"
     width: parent ? parent.width : 0
     height: width * 0.34
+    parent: Overlay.overlay
+    z:1;
 
     Component.onCompleted: InputContext.informKeyboardCreated()
 
