@@ -124,20 +124,21 @@ void KeyboardCreator::continueKeyboardCreation()
         return;
     }
 
-    auto continueLoading = [this]( QQmlComponent::Status status ) {
+    auto continueLoading = [cancelled = std::unique_ptr<QQmlComponent> {},
+                            this]( QQmlComponent::Status status ) mutable {
         if (status == QQmlComponent::Ready) {
             createKeyboardInstance();
         } else if (status == QQmlComponent::Error) {
             qCWarning(logOvk) << "Virtual keyboard can't be created" << _keyboardComponent->errors();
             _loading = false;
-            _keyboardComponent.reset();
+            cancelled = move( _keyboardComponent );
         }
     };
 
     _keyboardComponent.reset( new QQmlComponent( engine, _keyboardUrl, QQmlComponent::Asynchronous ));
 
     if (_keyboardComponent->isLoading())
-        connect( _keyboardComponent.get(), &QQmlComponent::statusChanged, this, continueLoading );
+        connect( _keyboardComponent.get(), &QQmlComponent::statusChanged, this, std::move(continueLoading ));
     else
         continueLoading( _keyboardComponent->status() );
 }
