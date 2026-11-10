@@ -61,7 +61,7 @@ void KeyPressInterceptor::setRepeatInterval( int repeatInterval )
 
 void KeyPressInterceptor::forwardPress( const QPointF& point )
 {
-    if (!_forwardTo || _touchPointId != -1)
+    if (!_forwardTo)
         return;
     _lastX = point.x();
     auto to = findKey( point );
@@ -221,16 +221,29 @@ void KeyPressInterceptor::stopTimer( int& timerId )
 
 void KeyPressInterceptor::mousePressEvent( QMouseEvent* event )
 {
+    // Ignore synthesized mouse events and mouse input during active touch.
+    if (_touchPointId != -1 ||
+        event->source() != Qt::MouseEventNotSynthesized)
+        return;
+
     forwardPress( event->localPos() );
 }
 
 void KeyPressInterceptor::mouseMoveEvent( QMouseEvent* event )
 {
+    if (_touchPointId != -1 ||
+        event->source() != Qt::MouseEventNotSynthesized)
+        return;
+
     forwardMove( event->localPos() );
 }
 
 void KeyPressInterceptor::mouseReleaseEvent( QMouseEvent* event )
 {
+    if (_touchPointId != -1 ||
+        event->source() != Qt::MouseEventNotSynthesized)
+        return;
+
     forwardRelease( event->localPos() );
 }
 
